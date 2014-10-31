@@ -32,11 +32,13 @@ function walk(node)
 function handleText(textNode) {
 	var v = textNode.nodeValue;
 
-	// Grab basic instances of the word "brand"
-	v = v.replace(/\b(B|b)rand/g, function(match, p1, offset, string) {
-		// b + 2 = d
-		d = String.fromCharCode(p1.charCodeAt(0) + 2);
-		return d + "ick";
-	});
+	// Grab basic instances of the word "brand" but ignore "brand new"
+	if (!v.match(/brand new/i)) {
+		v = v.replace(/\b(B|b)rand/g, function(match, p1, offset, string) {
+			// b + 2 = d
+			d = String.fromCharCode(p1.charCodeAt(0) + 2);
+			return d + "ick";
+		});
+	}
 	textNode.nodeValue = v;
 }
