@@ -35,7 +35,7 @@ function handleText(textNode) {
 	// Grab basic instances of the word "brand" but ignore whatever annoying edge cases I find.
 	// Hacky, but it'll do for now.
 	if (!v.match(/brand new|brandweiner|brandenburg|brandish|brandy/i)) {
-		v = v.replace(/\b(B|b)rand/g, function(match, p1, offset, string) {
+		v = v.replace(/(B|b)rand/g, function(match, p1, offset, string) {
 			// b + 2 = d
 			d = String.fromCharCode(p1.charCodeAt(0) + 2);
 			return d + "ick";
